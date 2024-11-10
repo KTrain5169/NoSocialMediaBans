@@ -1,0 +1,27 @@
+---
+interface Props {
+  title: string;
+  description: string;
+  accentColor?: 'primary' | 'secondary' | 'accent' | string;
+  titleColor?: string;
+}
+
+const { 
+  title, 
+  description, 
+  accentColor = 'accent',
+  titleColor = `var(--${accentColor})`
+} = Astro.props;
+---
+
+<section class="mt-12">
+  <h2 class="text-3xl font-bold mb-6" style={`color: ${titleColor}`}>
+    {title}
+  </h2>
+  <p class="text-lg" style="color: var(--text)">
+    {description}
+  </p>
+  <div class="mt-4">
+    <slot />
+  </div>
+</section> 

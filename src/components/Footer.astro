@@ -1,0 +1,88 @@
+---
+const currentYear = new Date().getFullYear();
+
+const resources = [
+  { name: 'Site source code', path: 'https://github.com/KTrain5169/NoSocialMediaBans' },
+];
+
+const contact = [
+  { name: 'Contribute', path: 'https://github.com/KTrain5169/NoSocialMediaBans/issues' },
+];
+---
+
+<footer class="w-full mt-16 relative overflow-hidden">
+  <!-- Gradient overlay -->
+  <div class="absolute inset-0 opacity-10 blur-3xl">
+    <div class="absolute inset-0" style="background: linear-gradient(45deg, var(--primary), var(--secondary))"></div>
+  </div>
+
+  <!-- Main footer content -->
+  <div class="relative" style="background: color-mix(in srgb, var(--primary) 95%, transparent)">
+    <div class="max-w-6xl mx-auto px-4 py-12 md:py-16">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-8">
+        <!-- About Section -->
+        <div class="space-y-4">
+          <h3 class="text-2xl font-bold relative inline-block" style="color: var(--primaryHighlightText)">
+            About This Site
+            <span class="absolute -bottom-1 left-0 w-1/2 h-0.5" style="background: var(--accent)"></span>
+          </h3>
+          <p class="leading-relaxed" style="color: var(--primaryHighlightText)">
+            Exploring evidence-based approaches to social media regulation and digital well-being that doesn't involve a blanket ban.
+          </p>
+        </div>
+
+        <!-- Resources Section -->
+        <div class="space-y-4">
+          <h3 class="text-2xl font-bold relative inline-block" style="color: var(--primaryHighlightText)">
+            Resources
+            <span class="absolute -bottom-1 left-0 w-1/2 h-0.5" style="background: var(--accent)"></span>
+          </h3>
+          <ul class="space-y-2">
+            {resources.map((item) => (
+              <li>
+                <a href={item.path} 
+                   class="group relative inline-block transition-all duration-300"
+                   style="color: var(--primaryHighlightText)">
+                  <span class="relative z-10 group-hover:opacity-80">{item.name}</span>
+                  <span class="absolute bottom-0 left-0 w-0 h-0.5 transition-all duration-300 group-hover:w-full"
+                        style="background: var(--accent)">
+                  </span>
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <!-- Contact Section -->
+        <div class="space-y-4">
+          <h3 class="text-2xl font-bold relative inline-block" style="color: var(--primaryHighlightText)">
+            Contact
+            <span class="absolute -bottom-1 left-0 w-1/2 h-0.5" style="background: var(--accent)"></span>
+          </h3>
+          <ul class="space-y-2">
+            {contact.map((item) => (
+              <li>
+                <a href={item.path} 
+                   class="group relative inline-block transition-all duration-300"
+                   style="color: var(--primaryHighlightText)">
+                  <span class="relative z-10 group-hover:opacity-80">{item.name}</span>
+                  <span class="absolute bottom-0 left-0 w-0 h-0.5 transition-all duration-300 group-hover:w-full"
+                        style="background: var(--accent)">
+                  </span>
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+
+      <!-- Copyright Section -->
+      <div class="mt-12 pt-8 border-t border-opacity-20 text-center" 
+           style="border-color: var(--primaryHighlightText)">
+        <p style="color: var(--primaryHighlightText)" class="opacity-80">
+          © {currentYear} KTrain5169. All rights reserved.
+        </p>
+      </div>
+    </div>
+  </div>
+</footer> 

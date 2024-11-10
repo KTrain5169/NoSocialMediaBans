@@ -1,16 +1,81 @@
 ---
+import MainLayout from '../layouts/MainLayout.astro';
+import InfoCard from '../components/InfoCard.astro';
+import CyclingSections from '../components/CyclingSections.astro';
 
+const keyIssues = [
+	'Impact on Digital Literacy',
+	'Economic Consequences',
+	'Privacy Concerns',
+	'Enforcement Challenges',
+];
+
+const betterSolutions = [
+	'Digital Education',
+	'Parental Controls',
+	'Platform Accountability',
+	'User Empowerment',
+];
+
+const sections = [
+	{
+		title: "Let's Explore Better Approaches",
+		description: "Instead of blanket bans, we need nuanced solutions that address root causes while preserving digital freedoms."
+	},
+	{
+		title: "Understanding the Impact",
+		description: "Social media bans have far-reaching consequences that affect various aspects of modern life."
+	},
+	{
+		title: "Building Better Solutions",
+		description: "We need to focus on education, awareness, and responsible platform design."
+	},
+	{
+		title: "Help us prevent the bans!",
+		description: "Join us in advocating for smarter, more effective approaches to social media regulation."
+	}
+];
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<MainLayout title="Why Social Media Bans Aren't the Answer">
+	<div class="max-w-4xl mx-auto">
+		<div class="text-center mb-12">
+			<h1 class="text-5xl md:text-6xl font-bold mb-8" style="color: var(--primary)">
+				Social Media Bans: 
+				<span style="color: var(--secondary)">Why They Don't Work</span>
+			</h1>
+
+			<p class="text-xl leading-relaxed max-w-3xl mx-auto">
+				Recent legislation targeting social media platforms raises important questions about digital rights, 
+				freedom of expression, and effective policy-making in the digital age.
+			</p>
+		</div>
+
+		<div class="space-y-8 mt-12">
+			<div class="grid grid-cols-1 md:grid-cols-2 gap-8 mt-12">
+				<InfoCard 
+					title="Key Issues" 
+					items={keyIssues} 
+					bgColor="primary"
+				/>
+				<InfoCard 
+					title="Better Solutions" 
+					items={betterSolutions} 
+					bgColor="secondary"
+				/>
+			</div>
+
+			<CyclingSections sections={sections}>
+				<!-- Optional: Add any content that should appear after the last section -->
+			</CyclingSections>
+		</div>
+
+		<div class="mt-16 text-center">
+			<a href="/arguments" 
+				class="inline-block px-6 py-3 rounded-lg transition-all duration-300 hover:scale-105"
+				style="background: var(--primary); color: var(--primaryHighlightText)">
+				Explore Our Arguments in Detail
+			</a>
+		</div>
+	</div>
+</MainLayout>

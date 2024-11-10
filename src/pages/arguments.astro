@@ -1,0 +1,195 @@
+---
+import MainLayout from '../layouts/MainLayout.astro';
+
+const argumentsList = [
+  {
+    title: "Digital Literacy Impact",
+    description: "Bans prevent young people from developing crucial digital literacy skills needed in today's world.",
+    points: [
+      "Reduced opportunity to learn responsible online behavior",
+      "Limited exposure to digital communication tools",
+      "Decreased ability to identify misinformation",
+      "Missing out on educational opportunities through social platforms"
+    ],
+    expanded: {
+      details: "Digital literacy is crucial in today's interconnected world. Social media platforms, despite their challenges, provide valuable opportunities for young people to develop these skills in a real-world context.",
+      examples: [
+        "Students learn to fact-check and verify information sources",
+        "Development of critical thinking through online discourse",
+        "Understanding digital footprints and online reputation management",
+        "Learning to navigate privacy settings and online safety"
+      ],
+      impact: "By removing access to these platforms, we risk creating a generation less prepared for the digital workplace and modern communication landscape."
+    }
+  },
+  {
+    title: "Economic Consequences",
+    description: "Social media bans can have significant economic impacts on businesses and creators.",
+    points: [
+      "Small businesses lose vital marketing channels",
+      "Content creators face income disruption",
+      "Reduced job opportunities in digital sectors",
+      "Impact on local digital economies"
+    ],
+    expanded: {
+      details: "The economic impact of social media bans extends far beyond just the platforms themselves, affecting local businesses, creators, and the broader digital economy.",
+      examples: [
+        "Local businesses report 30-50% revenue drops without social media marketing",
+        "Independent creators lose primary income streams",
+        "Digital marketing agencies face client losses and layoffs",
+        "Reduced investment in local digital infrastructure"
+      ],
+      impact: "These economic disruptions can have lasting effects on communities, particularly affecting young entrepreneurs and small businesses."
+    }
+  },
+  {
+    title: "Enforcement Challenges",
+    description: "Implementation and enforcement of social media bans present significant practical challenges.",
+    points: [
+      "Easy circumvention through VPNs",
+      "Difficulty in age verification",
+      "Inconsistent enforcement across platforms",
+      "Resource-intensive monitoring"
+    ],
+    expanded: {
+      details: "The enforcement of social media bans presents significant practical challenges. While VPNs can be used to circumvent bans, age verification systems can be difficult to implement consistently across platforms, leading to inconsistent enforcement.",
+      examples: [
+        "VPNs can be used to circumvent bans",
+        "Age verification systems can be difficult to implement consistently across platforms",
+        "Inconsistent enforcement across platforms",
+        "Resource-intensive monitoring"
+      ],
+      impact: "These challenges make it difficult to enforce social media bans effectively."
+    }
+  },
+  {
+    title: "Privacy and Rights",
+    description: "Bans can infringe on personal rights and create privacy concerns.",
+    points: [
+      "Restriction of free expression",
+      "Limited access to information",
+      "Privacy risks from verification systems",
+      "Impact on personal autonomy"
+    ],
+    expanded: {
+      details: "Social media bans can infringe on personal rights and create privacy concerns. While age verification systems are designed to protect children from harmful content, they can also restrict access to information and create privacy risks.",
+      examples: [
+        "Age verification systems can restrict access to information",
+        "Privacy risks from verification systems",
+        "Impact on personal autonomy",
+        "Restriction of free expression"
+      ],
+      impact: "These privacy concerns can have lasting effects on individuals, particularly affecting their ability to access information and express themselves freely."
+    }
+  }
+];
+---
+
+<MainLayout title="Arguments Against Social Media Bans">
+  <div class="max-w-4xl mx-auto px-4">
+    <!-- Hero Section -->
+    <section class="mb-16">
+      <h1 class="text-4xl md:text-5xl font-bold mb-6" style="color: var(--primary)">
+        Why Social Media Bans
+        <span style="color: var(--secondary)">Don't Work</span>
+      </h1>
+      <p class="text-xl leading-relaxed" style="color: var(--text)">
+        While concerns about social media's impact are valid, blanket bans create more problems than they solve. 
+        Here are the key arguments against implementing social media bans.
+      </p>
+    </section>
+
+    <!-- Arguments Grid -->
+    <div class="grid grid-cols-1 gap-8">
+      {argumentsList.map((arg, index) => (
+        <div class="p-6 rounded-lg transition-all duration-300"
+             style="background: color-mix(in srgb, var(--primary) 10%, var(--background))">
+          <!-- Basic Info -->
+          <div class="flex justify-between items-start">
+            <h2 class="text-2xl font-bold mb-4" style="color: var(--primary)">
+              {arg.title}
+            </h2>
+            <button class="expand-btn px-4 py-2 rounded-lg transition-all duration-300"
+                    data-index={index}
+                    style="background: var(--primary); color: var(--primaryHighlightText)">
+              Learn More
+            </button>
+          </div>
+          
+          <p class="mb-4 text-lg" style="color: var(--text)">
+            {arg.description}
+          </p>
+          
+          <ul class="space-y-2 list-disc list-inside mb-4" style="color: var(--text)">
+            {arg.points.map((point) => (
+              <li class="text-base">{point}</li>
+            ))}
+          </ul>
+
+          <!-- Expanded Content (hidden by default) -->
+          <div class="expanded-content hidden mt-6 space-y-4" data-index={index}>
+            <div class="p-4 rounded-lg" 
+                 style="background: color-mix(in srgb, var(--secondary) 10%, var(--background))">
+              <p class="mb-4" style="color: var(--text)">{arg.expanded.details}</p>
+              
+              <h3 class="text-xl font-semibold mb-3" style="color: var(--secondary)">
+                Supporting Examples
+              </h3>
+              <ul class="space-y-2 list-disc list-inside mb-4" style="color: var(--text)">
+                {arg.expanded.examples.map((example) => (
+                  <li class="text-base">{example}</li>
+                ))}
+              </ul>
+              
+              <div class="mt-4 p-4 rounded-lg" 
+                   style="background: color-mix(in srgb, var(--primary) 5%, var(--background))">
+                <h4 class="text-lg font-semibold mb-2" style="color: var(--primary)">
+                  Long-term Impact
+                </h4>
+                <p style="color: var(--text)">{arg.expanded.impact}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <!-- Call to Action -->
+    <section class="mt-16 p-8 rounded-lg text-center" 
+             style="background: color-mix(in srgb, var(--secondary) 15%, var(--background))">
+      <h2 class="text-3xl font-bold mb-4" style="color: var(--primary)">
+        Looking for Better Solutions?
+      </h2>
+      <p class="mb-6 text-lg" style="color: var(--text)">
+        Instead of bans, let's explore more effective approaches to address social media concerns.
+      </p>
+      <a href="/alternatives" 
+         class="inline-block px-6 py-3 rounded-lg transition-all duration-300 hover:scale-105"
+         style="background: var(--primary); color: var(--primaryHighlightText)">
+        Explore Alternatives
+      </a>
+    </section>
+  </div>
+</MainLayout>
+
+<script>
+  // Handle expand/collapse functionality
+  document.querySelectorAll('.expand-btn').forEach(button => {
+    button.addEventListener('click', () => {
+      const index = button.getAttribute('data-index');
+      const content = document.querySelector(`.expanded-content[data-index="${index}"]`);
+      const isHidden = content?.classList.contains('hidden');
+      
+      // Toggle content
+      content?.classList.toggle('hidden');
+      
+      // Update button text
+      button.textContent = isHidden ? 'Show Less' : 'Learn More';
+      
+      // Optional: Smooth scroll to content if expanding
+      if (isHidden) {
+        content?.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      }
+    });
+  });
+</script> 

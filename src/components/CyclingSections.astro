@@ -1,0 +1,48 @@
+---
+interface Props {
+  sections: {
+    title: string;
+    description: string;
+  }[];
+}
+
+const { sections } = Astro.props;
+
+// Get current theme colors for cycling
+const getThemeColors = (themeName: string) => {
+  switch (themeName) {
+    case 'discord':
+      return [
+        'var(--secondary)',  // Online Green
+        'var(--accent)',     // Idle Yellow
+        'var(--tertiary)',   // DND Red
+        'var(--quaternary)'  // Twitch Purple
+      ];
+    // Add other platform-specific color cycles here
+    default:
+      return [
+        'var(--primary)',
+        'var(--secondary)',
+        'var(--accent)',
+        'var(--tertiary)'
+      ];
+  }
+};
+---
+
+<div class="space-y-12">
+  {sections.map((section, index) => (
+    <section class="mt-12">
+      <h2 
+        class="text-3xl font-bold mb-6 transition-colors duration-300" 
+        style={`color: ${getThemeColors('discord')[index % 4]}`}
+      >
+        {section.title}
+      </h2>
+      <p class="text-lg" style="color: var(--text)">
+        {section.description}
+      </p>
+      {index === sections.length - 1 && <slot />}
+    </section>
+  ))}
+</div> 

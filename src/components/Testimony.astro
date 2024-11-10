@@ -1,0 +1,77 @@
+---
+interface Props {
+  quote: string;
+  source: string;
+  context?: string;
+  sourceUrl?: string;
+  theme?: string;
+}
+
+const { quote, source, context, sourceUrl, theme } = Astro.props;
+
+// Define which themes should use dark text in context
+const useDarkTextThemes = ['snapchat', 'instagram', 'facebook', 'tiktok'];
+const contextTextColor = useDarkTextThemes.includes(theme || '') ? 'black' : 'white';
+---
+
+<div class="testimony-card p-6 rounded-lg mb-8 transition-all duration-300 hover:scale-[1.02]"
+     style="background: color-mix(in srgb, var(--primary) 15%, var(--background))">
+  
+  <!-- Quote Section -->
+  <div class="relative">
+    <!-- Opening Quote Mark -->
+    <span class="absolute -top-4 -left-2 text-6xl opacity-30" 
+          style="color: var(--primaryHighlightText)">
+      "
+    </span>
+    
+    <!-- Quote Text -->
+    <blockquote class="text-xl md:text-2xl font-medium px-8 mb-4" 
+                style="color: var(--primaryHighlightText)">
+      {quote}
+    </blockquote>
+    
+    <!-- Closing Quote Mark -->
+    <span class="absolute -bottom-8 right-0 text-6xl opacity-30" 
+          style="color: var(--primaryHighlightText)">
+      "
+    </span>
+  </div>
+
+  <!-- Source Attribution -->
+  <div class="mt-8 flex items-center">
+    <cite class="not-italic">
+      {sourceUrl ? (
+        <a 
+          href={sourceUrl}
+          class="font-semibold hover:opacity-80 transition-opacity"
+          style="color: var(--accent)"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          {source}
+        </a>
+      ) : (
+        <span class="font-semibold" style="color: var(--accent)">
+          {source}
+        </span>
+      )}
+    </cite>
+  </div>
+
+  <!-- Optional Context Section -->
+  {context && (
+    <div class="mt-6 p-4 rounded-lg" 
+         style={{
+           background: 'color-mix(in srgb, var(--accent) 15%, var(--background))',
+           borderLeft: '4px solid var(--accent)'
+         }}>
+      <h3 class="text-lg font-semibold mb-2" style={`color: ${contextTextColor}`}>
+        Context
+      </h3>
+      <p class="text-base" style={`color: ${contextTextColor}`}>
+        {context}
+      </p>
+    </div>
+  )}
+</div> 
