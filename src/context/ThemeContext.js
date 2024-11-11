@@ -1,9 +1,9 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useState } from 'react';
 
 const ThemeContext = createContext();
 
 export const ThemeProvider = ({ children }) => {
-  const [theme, setTheme] = useState("tiktok"); // Default theme
+  const [theme, setTheme] = useState('tiktok'); // Default theme
 
   return (
     <ThemeContext.Provider value={{ theme, setTheme }}>
@@ -12,4 +12,4 @@ export const ThemeProvider = ({ children }) => {
   );
 };
 
-export const useTheme = () => useContext(ThemeContext);
+export const useTheme = () => useContext(ThemeContext); 
