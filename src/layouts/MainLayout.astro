@@ -2,6 +2,7 @@
 import '../styles/global.css';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
+import { socialMediaThemes } from '../utils/colorSchemes';
 
 interface Props {
   title: string;
@@ -10,10 +11,18 @@ interface Props {
 const { title } = Astro.props;
 ---
 
-<script type="module" is:inline>
-import { socialMediaThemes } from '../utils/colorSchemes';
+<script is:inline define:vars={{ socialMediaThemes }}>
 
 const randomTheme = socialMediaThemes[Math.floor(Math.random() * socialMediaThemes.length)];
+
+const root = document.documentElement;
+root.style.setProperty('--primary', randomTheme.primary);
+root.style.setProperty('--secondary', randomTheme.secondary);
+root.style.setProperty('--accent', randomTheme.accent);
+root.style.setProperty('--background', randomTheme.background);
+root.style.setProperty('--text', randomTheme.text);
+root.style.setProperty('--primaryHighlightText', randomTheme.primaryHighlightText);
+root.style.setProperty('--secondaryHighlightText', randomTheme.secondaryHighlightText);
 </script>
 
 <html lang="en">
@@ -21,15 +30,7 @@ const randomTheme = socialMediaThemes[Math.floor(Math.random() * socialMediaThem
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{title} - NoSocialMediaBans</title>
-    <style define:vars={{
-      primary: randomTheme.primary,
-      secondary: randomTheme.secondary,
-      accent: randomTheme.accent,
-      background: randomTheme.background,
-      text: randomTheme.text,
-      primaryHighlightText: randomTheme.primaryHighlightText,
-      secondaryHighlightText: randomTheme.secondaryHighlightText,
-    }}>
+    <style>
       :root {
         color-scheme: light dark;
       }
