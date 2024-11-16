@@ -10,7 +10,7 @@ interface Props {
 const { title } = Astro.props;
 ---
 
-<script type="module">
+<script type="module" is:inline>
 import { socialMediaThemes } from '../utils/colorSchemes';
 
 const randomTheme = socialMediaThemes[Math.floor(Math.random() * socialMediaThemes.length)];
